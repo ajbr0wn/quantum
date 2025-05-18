@@ -64,9 +64,10 @@ namespace SATSolver {
 
     // Encode variables as qubits (converts from computational basis to variable assignments)
     operation ApplyVariableEncoding(qubits : Qubit[]) : Unit is Adj + Ctl {
-        // In the simplest case, we can use the computational basis directly
-        // |0⟩ represents False, |1⟩ represents True
-        // This is just a placeholder - the actual implementation depends on our encoding
+        //Apply slight rotation to bias toward |1⟩ states
+        for q in qubits {
+            Ry(0.1, q); // Small rotation to slightly bias toward |1⟩
+        }
     }
 
     // Apply phase flip if satisfied
